@@ -24,10 +24,10 @@ class City:
     with open(file, 'r') as csvfile:
       csvreader = csv.reader(csvfile)     
       for row in csvreader:
-        print(', '.join(row))
+        print(', '.join(row).split())
 
       
-cities = []
+cities = [City]
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
