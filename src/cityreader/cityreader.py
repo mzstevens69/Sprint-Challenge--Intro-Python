@@ -14,6 +14,19 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+import csv
+
+file = "cities.csv"
+fields = [] 
+rows = [] 
+class City:
+  def __init__(self,name, lat, lon):
+    with open(file, 'r') as csvfile:
+      csvreader = csv.reader(csvfile)     
+      for row in csvreader:
+        print(', '.join(row))
+
+      
 cities = []
 
 def cityreader(cities=[]):
