@@ -93,12 +93,12 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   lat2, lon2 = [float(x) for x in input("Enter two numbers here: ").split()]
 # normalize data
   lat_list = []
-  lats.append(lat1)
-  lats.append(lat2)
+  lat_list.append(lat1)
+  lat_list.append(lat2)
   lat_list.sort()
   lon_list = []
-  lons.append(lon1)
-  lons.append(lon2)
+  lon_list.append(lon1)
+  lon_list.append(lon2)
   lon_list.sort()
    
   within = []
