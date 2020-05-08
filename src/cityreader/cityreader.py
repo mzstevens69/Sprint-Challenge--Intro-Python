@@ -17,24 +17,37 @@
 import csv
 
 file = "cities.csv"
-fields = [] 
+
 rows = [] 
 class City:
   def __init__(self,name, lat, lon):
-    with open(file, 'r') as csvfile:
-      csvreader = csv.reader(csvfile)     
-      for row in csvreader:
-        print(', '.join(row).split())
+    self.name = name
+    self.lat = lat
+    self.lon = lon
+    
+  def __str__(self):
+      return f" {self.name}, {self.lon}, {self.lat} "
+    
+ 
 
       
-cities = [City]
+cities = []
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
+  with open(file, 'r') as csvfile:
+      csvreader = csv.reader(csvfile)
+      record = 0
+      for row in csvreader:
+        if record == 0:
+          record += 1
+        else:
+            record = City(row[0], float(row[3]), float(row[4]))
+            cities.append(record)
     
-    return cities
+  return cities
 
 cityreader(cities)
 
@@ -43,7 +56,7 @@ for c in cities:
     print(c)
 
 # STRETCH GOAL!
-#
+
 # Allow the user to input two points, each specified by latitude and longitude.
 # These points form the corners of a lat/lon square. Pass these latitude and 
 # longitude values as parameters to the `cityreader_stretch` function, along
@@ -75,10 +88,27 @@ for c in cities:
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
+#take in 2 inputs and split them to 2 variables
+  lat1, lon1 = [float(x) for x in input("Enter two numbers here: ").split()]
+  lat2, lon2 = [float(x) for x in input("Enter two numbers here: ").split()]
+# normalize data
+  lat_list = []
+  lats.append(lat1)
+  lats.append(lat2)
+  lat_list.sort()
+  lon_list = []
+  lons.append(lon1)
+  lons.append(lon2)
+  lon_list.sort()
+   
   within = []
 
-  # TODO Ensure that the lat and lon valuse are all floats
+  # TODO Ensure that the lat and lon values are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
+  for xy in cities:
+    if cities[0] >= xy.float(lat_list[0]) :
+      within.append()
+     
 
   return within
